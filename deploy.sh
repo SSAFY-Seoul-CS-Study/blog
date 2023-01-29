@@ -1,6 +1,6 @@
 #!/bin/bash
 
-sh deploy.sh
+#sh deploy.sh
 
 echo -e "\033[0;32mDeploying updates to GitHub...\033[0m"
 
