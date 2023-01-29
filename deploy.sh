@@ -1,6 +1,6 @@
 #!/bin/bash
 
-sh notion-to-gh-pages.sh
+bash notion-to-gh-pages.sh
 
 echo -e "\033[0;32mDeploying updates to GitHub...\033[0m"
 
