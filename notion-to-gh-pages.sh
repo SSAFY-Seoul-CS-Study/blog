@@ -44,7 +44,7 @@ for exported_foldername in ${exported_foldername_array[*]}; do
     # 적용안함 : 파일명에 공백있는 경우: 문제가 생길 수 있으므로 파일명에 있는 공백을 '_'로 바꿔줌
     #for f in $exported_foldername/*\ *
     #do mv "$f" "${f// /_}"; done
-
+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
     # exported_filename 추출하기
     exported_filename=""
     for entry in ./$exported_foldername/*.md
@@ -70,7 +70,7 @@ for exported_foldername in ${exported_foldername_array[*]}; do
 
     # Making a post file name
     fixed_filename="$(date +%Y)-$(date +%m)-$(date +%d)-$meta_title_encoded"
-
+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
     # REPLACE THIS as your github.io structure
     post_folder_path="content/posts/$fixed_filename" # 여기서 /을 앞에 넣으면 안됨. 이미지 경로 할때는 앞에 / 넣어줘야 url상에서 image폴더 찾을 수 있지만 로컬에서 실행할때는 루트로 들어가기에...
 
