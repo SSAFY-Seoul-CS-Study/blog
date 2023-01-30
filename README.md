@@ -4,7 +4,7 @@
 ## 깃 클론시 주의점
 저장소 클론 시 반드시 해당형식으로 clone 명령어를 사용해주세요!!!
 ```bash
-git clone --recurse-submodules https://github.com/Network-Leader/blog.git
+git clone --recurse-submodules https://github.com/SSAFY-Seoul-CS-Study/blog.git
 ```
 
 # How to Post
