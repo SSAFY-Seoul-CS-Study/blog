@@ -115,4 +115,4 @@ Web Server is available at # 이 부분 ==>> http://localhost:1313/ (bind addres
 
 ## About hugo-theme-stack 📥
 
-Read Wiki For More Details => **[PaperMod - Installation]([https://github.com/adityatelange/hugo-PaperMod/wiki/Installation](https://github.com/CaiJimmy/hugo-theme-stack))**
+Read Wiki For More Details => **[PaperMod - Installation]([https://github.com/adityatelange/hugo-PaperMod/wiki/Installation](https://github.com/CaiJimmy/hugo-theme-stack])**
