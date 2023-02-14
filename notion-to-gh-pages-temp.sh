@@ -1,8 +1,9 @@
-#/bin/bash
+#!/bin/bash
 
 # Author: Kim Hangil(uoneway). 
 # URL: https://github.com/uoneway/Notion-to-GitHub-Pages
 # Contact: uoneway@gmail.com
+
 
 
 # Name regexp of exported zip file from Notion
@@ -17,12 +18,10 @@ echo "##### Welcome to Notion-to-GitHub-Pages! #####"
 unzd() {
     if [[ $# != 1 ]]; then echo I need a single argument, the name of the archive to extract; return 1; fi
     target="${1%.zip}"
-
     if [ -d "$target" ]; then # 압축 풀린 폴더가 존재할 경우, 
         echo "There are folder have same name. So we don't do unzip"
     else
-        # unzip -qq "$1" -d "${target##*/}" # Mac에서는 Illegal byte sequence 에러 발생
-        ditto -V -x -k --sequesterRsrc --rsrc "$1" "${target##*/}"
+        unzip -qq "$1" -d "${target##*/}" # -qq outputting 없이 수행
     fi
 }
 
@@ -37,13 +36,14 @@ if [ ${#exported_foldername_array[*]} -lt 1 ]; then  # exported_zip_reg 규칙�
     exit 100
 fi
 
+
 # Exported folder 별로 다음을 시행
 for exported_foldername in ${exported_foldername_array[*]}; do
     
-
     # 적용안함 : 파일명에 공백있는 경우: 문제가 생길 수 있으므로 파일명에 있는 공백을 '_'로 바꿔줌
     #for f in $exported_foldername/*\ *
     #do mv "$f" "${f// /_}"; done
+
     # exported_filename 추출하기
     exported_filename=""
     for entry in ./$exported_foldername/*.md
@@ -54,8 +54,8 @@ for exported_foldername in ${exported_foldername_array[*]}; do
     # title값 추출하기(첫번째 줄에 #으로 시작하는 문자열이 있는 경우, title로 인식)
     meta_title=$(head -n 1 "$exported_file_path")
     if [[ $meta_title != "# "* ]]; then  # 맨 앞이 #으로 되어있는지 확인해서 아니면, 직접 입력받기
-    	echo -e "ERROR: There are no post's title detected. \nPlease check title is at top of the file."
-        exit 100
+    	echo -n "Enter a title of the post:"
+        read  meta_title
     fi
     meta_title=$(echo "$meta_title" | sed 's/# //g')
     
@@ -65,57 +65,64 @@ for exported_foldername in ${exported_foldername_array[*]}; do
     # 일반 URL encoding써도 되지만 한글도 모두 변환되어 버리기에 임의로 기호를 바꿔줌
     meta_title_encoded=$(echo "$meta_title" | sed 's/[][\\^*+=,!?.:;&@()$-]/-/g' | sed 's/# //g' | sed 's/ /-/g' | sed 's/--/-/g')
 
-    # meta 정보 추가하기
-    echo -n "포스팅의 카테고리를 입력하세요 : "
-    read meta_categories
-    echo -n "포스팅의 태그를 입력하세요 : "
-    read meta_tags
-    echo -n "본인의 이름이나 닉네임을 입력하세요 : "
-    read meta_author
-    echo -n "포스팅의 부제목을 입력하세요 : "
-    read meta_subtitle
-
-    # meta_last_modified_at="$(date +%Y)-$(date +%m)-$(date +%d) $(date +%H):$(date +%M):$(date +%S) +0000"
-
-
     # Making a post file name
     fixed_filename="$(date +%Y)-$(date +%m)-$(date +%d)-$meta_title_encoded"
+
     # REPLACE THIS as your github.io structure
-    post_folder_path="content/post/$fixed_filename" # 여기서 /을 앞에 넣으면 안됨. 이미지 경로 할때는 앞에 / 넣어줘야 url상에서 image폴더 찾을 수 있지만 로컬에서 실행할때는 루트로 들어가기에...
+    posts_folder_path="content/post/$fixed_filename" # 여기서 /을 앞에 넣으면 안됨. 이미지 경로 할때는 앞에 / 넣어줘야 url상에서 image폴더 찾을 수 있지만 로컬에서 실행할때는 루트로 들어가기에...
+    images_folder_path="$posts_folder_path/images"
+    hugo new --kind post "$posts_folder_path/index.md"
 
-    # Changing a file name and move
-    # If directories not exist, make it.
-    if [ -d "$post_folder_path" ]; then # 압축 풀린 폴더가 존재할 경우, 
-        echo "There are folder for same post. Please change the post's title not to be the same."
-        exit 100
-    else
-        mkdir -p "$post_folder_path"
-    fi
+    # Jekyll에서 사용되는 meta 정보 추가하기
+    echo -n "Enter categories: "
+    read  meta_categories
+    # echo -n "Enter tags: "
+    # read  meta_tags
+    echo -n "Enter author: "
+    read  meta_author
+    echo -n "Enter a subtitle: "
+    read  meta_description
 
-    hugo new --kind post "$post_folder_path/index.md"
+    meta_date="$(date +%Y)-$(date +%m)-$(date +%d) $(date +%H):$(date +%M):$(date +%S) +0000"
+    meta_last_modified_at="$(date +%Y)-$(date +%m)-$(date +%d) $(date +%H):$(date +%M):$(date +%S) +0000"
 
     # 한 줄씩 추가하기(한 번에 하려고 했더니 /n 줄바꿈이 문자열 그대로 md에 입력되어 한줄씩 추가로 수정)
     # OS X ships with BSD sed, where the suffix for the -i option(changes made to the file) is mandatory. Try sed -i ''
     # https://stackoverflow.com/questions/16745988/sed-command-with-i-option-in-place-editing-works-fine-on-ubuntu-but-not-mac
-    # sed -i "" -e $'1 a\\\n'"title: $meta_title" "$post_folder_path/index.md" #title은 Notion 제목값으로 자동 입력
+    # sed -i '' "1s|.*|---|" "$exported_file_path"
+    sed -i "2s/.*/title: $meta_title/" $posts_folder_path/index.md #title은 Notion 제목값으로 자동 입력
+    sed -i "3s/.*/date: $meta_date/" $posts_folder_path/index.md # https://unix.stackexchange.com/questions/52131/sed-on-osx-insert-at-a-certain-line
+    sed -i "4s/.*/categories: $meta_categories/" $posts_folder_path/index.md
+    # sed -i "5s/.*/tags: $meta_tags/" $posts_folder_path/index.md
+    sed -i "6s/.*/author: $meta_author/" $posts_folder_path/index.md
+    sed -i "7s/.*/description: $meta_description/" $posts_folder_path/index.md
+    # sed -i "" -e $'7 a\\\n'"---" "$exported_file_path"
 
-    # i 옵션뒤의 ''은 Mac의 sed가 BSD 버전이라 발생하는 에러를 방지하기 위함
-    # https://singhkays.com/blog/sed-error-i-expects-followed-by-text/
-    sed -i '' "2s|.*|title: $meta_title|g" "$post_folder_path/index.md"
+
 
     # Changing a image path in exported_filename.md
     # exported_filename_for_images_path=$(echo "$exported_filename" | sed 's/ /%20/g') # 파일명에 공백있는 경우: %20으로 수정. 추후 md 내 이미지 경로에 이용
-    exported_filename_for_images_path=$(node encodeURI.js "$exported_filename")
+    echo $(vis -h "$exported_filename")
+    echo -e "$(sed 's/+/ /g; s/%/\\x/g')"
+    
     echo "$exported_filename_for_images_path"
-    sed -i '' "1d" "$exported_file_path"
-    sed -i '' "s|"$exported_filename_for_images_path"|"images"|g" "$exported_file_path"
-    cat "$exported_file_path" >> "$post_folder_path/index.md"
-    mv -i -v "$exported_foldername/$exported_filename" "$post_folder_path/images"
 
+    sed -i "1d" $exported_file_path
+    sed -i "s/$exported_filename_for_images_path/images/g" $exported_file_path
+    cat "$exported_file_path" >> "$posts_folder_path/index.md"
+    mv -i -v "$exported_foldername/$exported_filename" "$posts_folder_path/images"
 
-    # # git add
-    # git add "$post_folder_path/index.md"
-    # git add "$post_folder_path"
+    # Changing a file name and move
+    # If directories not exist, make it. 
+    mkdir -p $posts_folder_path
+    mkdir -p $images_folder_path
+
+    # mv -i -v "$exported_file_path" "$posts_folder_path/$fixed_filename.md"
+    # mv -i -v "$exported_foldername/$exported_filename" "$images_folder_path/$fixed_filename"
+
+    # git add
+    # git add "$posts_folder_path/$fixed_filename.md"
+    # git add "$images_folder_path/$fixed_filename"
     # git commit -m "$fixed_filename is uploaded"
 
     rm -r "$exported_foldername"
@@ -123,6 +130,3 @@ for exported_foldername in ${exported_foldername_array[*]}; do
 
     echo -e "Work for the $meta_title post is completed!\n"
 done
-
-
-# git push
