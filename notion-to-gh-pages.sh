@@ -66,14 +66,14 @@ for exported_foldername in ${exported_foldername_array[*]}; do
     meta_title_encoded=$(echo "$meta_title" | sed 's/[][\\^*+=,!?.:;&@()$-]/-/g' | sed 's/# //g' | sed 's/ /-/g' | sed 's/--/-/g')
 
     # meta 정보 추가하기
-    echo -n "포스팅의 카테고리를 입력하세요 : "
-    read meta_categories
-    echo -n "포스팅의 태그를 입력하세요 : "
-    read meta_tags
-    echo -n "본인의 이름이나 닉네임을 입력하세요 : "
-    read meta_author
-    echo -n "포스팅의 부제목을 입력하세요 : "
-    read meta_subtitle
+    # echo -n "포스팅의 카테고리를 입력하세요 : "
+    # read meta_categories
+    # echo -n "포스팅의 태그를 입력하세요 : "
+    # read meta_tags
+    # echo -n "본인의 이름이나 닉네임을 입력하세요 : "
+    # read meta_author
+    # echo -n "포스팅의 부제목을 입력하세요 : "
+    # read meta_subtitle
 
     # meta_last_modified_at="$(date +%Y)-$(date +%m)-$(date +%d) $(date +%H):$(date +%M):$(date +%S) +0000"
 
