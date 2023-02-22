@@ -4,8 +4,8 @@ date: 2023-01-30T00:17:42+09:00
 categories: [""] #카테고리 설정
 tags: [""] #태그 달기
 author: "Me" #본인 이름 넣기  
-# author: ["Me", "You"] # 공동저자 일 경우
 description: "" # 부제목 넣기
+# author: ["Me", "You"] # 공동저자 일 경우
 
 showToc: true
 TocOpen: false

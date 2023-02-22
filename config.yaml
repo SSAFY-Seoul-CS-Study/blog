@@ -1,26 +1,31 @@
-baseurl: https://example.com
+baseurl: https://SSAFY-Seoul-CS-Study.github.io/
 languageCode: en-us
 theme: hugo-theme-stack
 paginate: 5
-title: Example Site
+title: SSAFY 서울 CS 스터디 블로그
 
 languages:
+    ko:
+        languageName: 한글
+        title: SSAFY 서울 CS 스터디 블로그
+        description: CS 기초 스터디 블로그 입니다!
+        weight: 1
     en:
         languageName: English
-        title: Example Site
-        description: Example description
-        weight: 1
-    zh-cn:
-        languageName: 中文
-        title: 演示站点
-        description: 演示说明
+        title: SSAFY 서울 CS 스터디 블로그
+        description: CS Basic Study Blog!
         weight: 2
-    ar:
-        languageName: عربي
-        languagedirection: rtl
-        title: موقع تجريبي
-        description: وصف تجريبي
-        weight: 3
+    # zh-cn:
+    #     languageName: 中文
+    #     title: 演示站点
+    #     description: 演示说明
+    #     weight: 3
+    # ar:
+    #     languageName: عربي
+    #     languagedirection: rtl
+    #     title: موقع تجريبي
+    #     description: وصف تجريبي
+    #     weight: 4
 
 # Change it to your Disqus shortname before using
 disqusShortname: hugo-theme-stack
@@ -30,7 +35,7 @@ googleAnalytics:
 
 # Theme i18n support
 # Available values: ar, bn, ca, de, el, en, es, fr, hu, id, it, ja, ko, nl, pt-br, th, uk, zh-cn, zh-hk, zh-tw
-DefaultContentLanguage: en
+DefaultContentLanguage: ko
 
 # Set hasCJKLanguage to true if DefaultContentLanguage is in [zh-cn ja ko]
 # This will make .Summary and .WordCount behave correctly for CJK languages.
@@ -48,7 +53,7 @@ params:
     favicon:  # e.g.: favicon placed in `static/favicon.ico` of your site folder, then set this field to `/favicon.ico` (`/` is necessary)
 
     footer:
-        since: 2020
+        since: 2023
         customText:
 
     dateFormat:
@@ -56,12 +61,14 @@ params:
         lastUpdated: Jan 02, 2006 15:04 MST
 
     sidebar:
-        emoji: 🍥
-        subtitle: Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+        emoji: ✏️
+        subtitle: CS 기술면접을 대비합니다!
         avatar:
             enabled: true
             local: true
-            src: img/avatar.png
+            # src: img/avatar.png
+            # src: img\Study_Logo.png
+            src: img/Study_Logo.png
 
     article:
         math: false
@@ -199,7 +206,7 @@ menu:
     social:
         - identifier: github
           name: GitHub
-          url: https://github.com/CaiJimmy/hugo-theme-stack
+          url: https://github.com/SSAFY-Seoul-CS-Study/blog
           params:
               icon: brand-github
 
