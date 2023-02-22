@@ -1,9 +1,9 @@
 ---
 title: 힙(Heap)의 동작방식과 시간복잡도를 설명해주세요
-date: 2023-02-22T23:29:59+09:00
-categories: [""] #카테고리 설정
-tags: [""] #태그 달기
-author: "Me" #본인 이름 넣기  
+date: 2023-02-04T23:29:59+09:00
+categories: [자료구조] #카테고리 설정
+tags: [힙,시간복잡도] #태그 달기
+author: 박종호 #본인 이름 넣기  
 description: "" # 부제목 넣기
 # author: ["Me", "You"] # 공동저자 일 경우
 
@@ -26,54 +26,41 @@ UseHugoToc: true
 ShareButtons: []
 ---
 
-날짜: 2023/02/04
-담당자: TPoster
-상태: Done
-유형: 자료구조
+## **힙(Heap) 이란**
 
-## ***Heap***
+> 우선순위 큐를 구현하기 위해 만들어진 완전 이진 트리형 자료구조
 
-: 우선순위 큐를 구현하기 위해 만들어진 완전 이진 트리형 자료구조
+![[https://gmlwjd9405.github.io/2018/05/10/data-structure-heap.html](https://gmlwjd9405.github.io/2018/05/10/data-structure-heap.html)](images/Untitled.png)
 
 - 추가된 값들 중에서 최댓값이나 최솟값을 빠르게 찾을 수 있음
 - 이진 탐색 트리와 달리 느슨한 반정렬 상태를 유지함
 - 또한 중복된 값의 추가를 허용함
-- 배열과 리스트에 비해 평균적으로 더 나은 효율을 보여줌
-
-![[https://gmlwjd9405.github.io/2018/05/10/data-structure-heap.html](https://gmlwjd9405.github.io/2018/05/10/data-structure-heap.html)](images/Untitled.png)
-
-[https://gmlwjd9405.github.io/2018/05/10/data-structure-heap.html](https://gmlwjd9405.github.io/2018/05/10/data-structure-heap.html)
+- 배열과 리스트에 비해 평균적으로 더 나은 효율을 보여줌  
 
 ## **종류**
 
-![[https://gmlwjd9405.github.io/2018/05/10/data-structure-heap.html](https://gmlwjd9405.github.io/2018/05/10/data-structure-heap.html)](images/Untitled%201.png)
-
-[https://gmlwjd9405.github.io/2018/05/10/data-structure-heap.html](https://gmlwjd9405.github.io/2018/05/10/data-structure-heap.html)
+![[https://gmlwjd9405.github.io/2018/05/10/data-structure-heap.html](https://gmlwjd9405.github.io/2018/05/10/data-structure-heap.html)](images/Untitled1.png)  
 
 - 최소 힙 (부모노드 ≤ 자식노드 && 루트노드 == MAX)
-- 최대 힙 (부모노드 ≥ 자식노드 && 루트노드 == MAX)
+- 최대 힙 (부모노드 ≥ 자식노드 && 루트노드 == MAX)  
 
 ## 동작방식
 
 ### 1. 데이터의 추가
 
-![[https://gmlwjd9405.github.io/2018/05/10/data-structure-heap.html](https://gmlwjd9405.github.io/2018/05/10/data-structure-heap.html)](images/Untitled%202.png)
-
-[https://gmlwjd9405.github.io/2018/05/10/data-structure-heap.html](https://gmlwjd9405.github.io/2018/05/10/data-structure-heap.html)
+![[https://gmlwjd9405.github.io/2018/05/10/data-structure-heap.html](https://gmlwjd9405.github.io/2018/05/10/data-structure-heap.html)](images/Untitled2.png)
 
 1. 인덱스를 2로 나눈 값의 노드와 비교 (부모노드와 비교)
-2. 루트 노드까지 비교하는 경우, 시간 복잡도가 log(n)으로 최대이다.
+2. 루트 노드까지 비교하는 경우, 시간 복잡도가 log(n)으로 최대이다.  
 
 ### 데이터의 삭제
 
-![[https://gmlwjd9405.github.io/2018/05/10/data-structure-heap.html](https://gmlwjd9405.github.io/2018/05/10/data-structure-heap.html)](images/Untitled%203.png)
-
-[https://gmlwjd9405.github.io/2018/05/10/data-structure-heap.html](https://gmlwjd9405.github.io/2018/05/10/data-structure-heap.html)
+![[https://gmlwjd9405.github.io/2018/05/10/data-structure-heap.html](https://gmlwjd9405.github.io/2018/05/10/data-structure-heap.html)](images/Untitled3.png)  
 
 1. 삭제 시 인덱스가 가장 높은 값이 루트노드를 대체
 2. 이후 자식 노드들과 비교하며 큰 값과 자리를 교환한다.
 3. 가장 아래까지 내려가는 경우 시간 복잡도가 log(n)으로 최대이다.
-4. 힙은 우선순위 큐를 토대로 한 자료구조이므로 중간값 삭제 및 추가는 고려하지 않는다.
+4. 힙은 우선순위 큐를 토대로 한 자료구조이므로 중간값 삭제 및 추가는 고려하지 않는다.  
 
 ## 추가) 구현방법
 
