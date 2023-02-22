@@ -1,6 +1,6 @@
 ---
-title: ArrayList 와 LinkedList 는 어떤 점이 다른지 설명해주세요.
-date: 2023-02-13T00:57:57+09:00
+title: 배열(ArrayList) 과 리스트(LinkedList) 는 어떤 점이 다른지 설명해주세요
+date: 2023-02-22T21:58:41+09:00
 categories: [""] #카테고리 설정
 tags: [""] #태그 달기
 author: "Me" #본인 이름 넣기  
