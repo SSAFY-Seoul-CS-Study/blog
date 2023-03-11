@@ -1,9 +1,9 @@
 ---
-title: 프로세스(Process) 와 스레드(Thread) 의 차이점을 설명해주세요
-date: 2023-03-10T22:06:15+09:00
-categories: [""] #카테고리 설정
-tags: [""] #태그 달기
-author: "Me" #본인 이름 넣기  
+title: 프로세스(Process) 와 쓰레드(Thread) 의 차이점을 설명해주세요
+date: 2023-02-11T22:06:15+09:00
+categories: ["운영체제",] #카테고리 설정
+tags: ["프로세스","쓰레드",] #태그 달기
+author: 이동윤 #본인 이름 넣기  
 description: "" # 부제목 넣기
 # author: ["Me", "You"] # 공동저자 일 경우
 
@@ -26,11 +26,6 @@ UseHugoToc: true
 ShareButtons: []
 ---
 
-날짜: 2023/02/11
-담당자: 동윤 이
-상태: In progress
-유형: 운영체제
-
 ### 프로그램 (Program)
 
 ![Untitled](images/Untitled.png)
@@ -39,7 +34,7 @@ ex. 카카오톡, 웹 브라우저 등
 
 ### 프로세스 (Process)
 
-![Untitled](images/Untitled%201.png)
+![Untitled](images/Untitled1.png)
 
 - 프로세스란
     - 운영체제로부터 자원을 할당받는 작업의 단위
@@ -56,7 +51,7 @@ ex. 카카오톡, 웹 브라우저 등
 
 ### 스레드 (Thread)
 
-![Untitled](images/Untitled%202.png)
+![Untitled](images/Untitled2.png)
 
 - 스레드란?
     - 할당 받은 자원을 이용하는 실행 단위

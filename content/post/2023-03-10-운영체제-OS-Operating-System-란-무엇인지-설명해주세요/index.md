@@ -1,9 +1,9 @@
 ---
 title: 운영체제(OS, Operating System)란 무엇인지 설명해주세요
-date: 2023-03-10T22:06:14+09:00
-categories: [""] #카테고리 설정
-tags: [""] #태그 달기
-author: "Me" #본인 이름 넣기  
+date: 2023-02-11T22:06:14+09:00
+categories: ["운영체제",] #카테고리 설정
+tags: ["OS",] #태그 달기
+author: 박종호 #본인 이름 넣기  
 description: "" # 부제목 넣기
 # author: ["Me", "You"] # 공동저자 일 경우
 
@@ -26,19 +26,13 @@ UseHugoToc: true
 ShareButtons: []
 ---
 
-날짜: 2023/02/11
-담당자: TPoster
-상태: In progress
-유형: 운영체제
-
 > 운영체제는 **시스템 자원을 관리**하여 사용자가 **하드웨어의 기능을 이용**하고 **응용프로그램을 실행**할 수 있도록 도와주는 **소프트웨어(또는 인터페이스)**
-> 
 
-P.S. 운영체제를 구성하는 프로그램들 중 상시 메모리에 상주하는 것이 **커널(Kernel)**
+P.S. 운영체제를 구성하는 프로그램들 중 상시 메모리에 상주하는 것이 **커널(Kernel)**<br/><br/>
 
 ## 운영체제의 종류
 
-![Untitled](images/Untitled.png)
+![다양한 운영체제 종류](images/Untitled.png)
 
 ## 운영체제의 목적
 
@@ -52,7 +46,7 @@ P.S. 운영체제를 구성하는 프로그램들 중 상시 메모리에 상주
 
 ## 운영체제의 기능
 
-![Untitled](images/Untitled%201.png)
+![운영체제의 기능 정리](images/Untitled1.png)
 
 ### 1. 메모리 관리
 

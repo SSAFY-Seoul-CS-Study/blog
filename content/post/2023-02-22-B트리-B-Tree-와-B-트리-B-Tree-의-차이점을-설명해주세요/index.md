@@ -2,7 +2,7 @@
 title: B트리(B Tree) 와 B+트리(B+ Tree) 의 차이점을 설명해주세요
 date: 2023-02-04T23:29:58+09:00
 categories: [자료구조,] #카테고리 설정
-tags: [B트리,B+트리] #태그 달기
+tags: [B트리,B+트리,] #태그 달기
 author: 이정민 #본인 이름 넣기  
 description: "" # 부제목 넣기
 # author: ["Me", "You"] # 공동저자 일 경우
